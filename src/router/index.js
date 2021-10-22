@@ -41,6 +41,24 @@ const routes = [
       import(/* webpackChunkName: "login" */ "../views/Login.vue"),
   },
   {
+    path: "/redirect",
+    name: "Redirect",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "profile" */ "../views/Redirect.vue"),
+  },
+  {
+    path: "/profile/:id",
+    name: "ProfileId",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "profile" */ "../views/Profile.vue"),
+  },
+  {
     path: "/profile",
     name: "Profile",
     // route level code-splitting
@@ -57,6 +75,15 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "edituser" */ "../views/EditUser.vue"),
+  },
+  {
+    path: "/admin",
+    name: "Admin",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "admin" */ "../views/Admin.vue"),
   },
 ];
 

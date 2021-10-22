@@ -1,0 +1,75 @@
+.users-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.list-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 70%;
+    gap: 2%;
+}
+
+.user-div{
+    display: flex;
+    width: 32%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    background-color: rgb(49, 49, 49);
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 2%;
+    padding-bottom: 20px;
+    overflow-wrap: break-word;
+    cursor: pointer;
+}
+h1{
+    margin-bottom: 40px;
+    margin-top: 40px;
+
+}
+h3{
+    align-items: center;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+.user-text, .password-user{
+    text-align: left;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    cursor: pointer;
+
+}
+
+.password-user{
+    width: 22ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user-div:hover{
+    background-color: rgb(97, 97, 97);
+    
+}
+
+div[data-result-val="admin"]{
+    background-color: rgb(81, 129, 111);
+}
+div[data-result-val="super"]{
+    background-color: rgb(112, 100, 129);
+}
+div[data-result-val="admin"]:hover{
+    background-color: rgb(100, 151, 133);
+}
+div[data-result-val="super"]:hover{
+    background-color: rgb(135, 125, 150);
+}
+
+.fa-user-times{
+    color: white;
+}

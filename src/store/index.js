@@ -9,6 +9,7 @@ const getDefaultState = () => ({
   user: {},
   users: {},
   userInfo: {},
+  admin: false,
 });
 
 export default new Vuex.Store({
@@ -29,6 +30,9 @@ export default new Vuex.Store({
     SET_USER_INFO: (state, userInfo) => {
       state.userInfo = userInfo;
     },
+    SET_ADMIN: (state, admin) => {
+      state.admin = admin;
+    },
     RESET: (state) => {
       Object.assign(state, getDefaultState());
     },
@@ -47,12 +51,16 @@ export default new Vuex.Store({
     getAllUsers: ({ commit }, { users }) => {
       commit("SET_USERS", users);
     },
+    isAdmin: ({ commit }, { admin }) => {
+      commit("SET_ADMIN", admin);
+    },
   },
   getters: {
     isLoggedIn: (state) => state.token,
     getUser: (state) => state.user,
     getUserInfo: (state) => state.userInfo,
     getUsers: (state) => state.users,
+    getAdmin: (state) => state.admin,
   },
   modules: {},
 });

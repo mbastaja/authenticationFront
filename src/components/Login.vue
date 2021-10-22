@@ -67,7 +67,7 @@ export default {
 
         this.$store.dispatch("login", { token, user });
 
-        this.$router.push("/profile");
+        this.$router.push("/redirect");
 
         this.$vToastify.success("Successfully logged in");
       } catch (error) {
