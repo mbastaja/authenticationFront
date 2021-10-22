@@ -16,7 +16,7 @@ export default {
   },
   created() {
     this.user = this.$store.getters.getUser;
-    this.token = this.$store.getters.isLoggedIn;
+    this.token = this.$store.getters.getToken;
     this.userOrAdminGetUserData();
   },
   methods: {

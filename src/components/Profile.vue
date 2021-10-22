@@ -1,101 +1,88 @@
 <template>
   <div class="container">
-    <div v-if="!isAdmin">
-      <h3>This is a profile of a user with ID {{ userData.id }}</h3>
-      <div>
-        <label>Full name: </label>
-        {{ userData.fullname }}
+    <h1>Profile page</h1>
+    <div class="user-data-container">
+      <h2 v-if="this.$route.params.id">
+        This is a profile of a user with ID {{ user.id }}
+      </h2>
+      <h2 v-else>This is a profile of a user with ID {{ userData.id }}</h2>
+
+      <customBtn
+        v-if="this.$route.params.id"
+        @onClick="openEditUserProfile(user.id)"
+        ><i class="fas fa-user-edit fa-3x"></i
+      ></customBtn>
+
+      <customBtn v-else @onClick="openEditUserProfile(userData.id)"
+        ><i class="fas fa-user-edit fa-3x"></i
+      ></customBtn>
+
+      <label class="user-info">Full name </label>
+      <div v-if="this.$route.params.id" class="user-data">
+        {{ user.fullname }}
       </div>
-      <div>
-        <label>Username: </label>
-        {{ userData.username }}
+      <div v-else class="user-data">{{ userData.fullname }}</div>
+
+      <label class="user-info">Username </label>
+      <div v-if="this.$route.params.id" class="user-data">
+        {{ user.username }}
       </div>
-      <div>
-        <label>Password: </label>
-        {{ userData.password }}
+      <div v-else class="user-data">{{ userData.username }}</div>
+
+      <label class="user-info">Email </label>
+      <div v-if="this.$route.params.id" class="user-data">
+        {{ user.email }}
       </div>
-    </div>
-    <div class="users-container" v-else>
-      <h1>Admin page</h1>
-      <div class="list-container">
-        <div class="users-list">
-          <label v-for="user in users" :key="user.id" class="user-listed">
-            <div v-on:click="openUserProfile(user.id)" class="user-div">
-              <h3>{{ user.role }}</h3>
-              <label class="user-text">ID: {{ user.id }}</label>
-              <label class="user-text">Username: {{ user.username }}</label>
-              <label class="user-text">Full name: {{ user.fullname }}</label>
-              <label class="user-text">Email: {{ user.email }}</label>
-              <label class="password-user">Password: {{ user.password }}</label>
-              <label class="user-text">Role: {{ user.role }}</label>
-            </div>
-          </label>
-        </div>
+      <div v-else class="user-data">
+        {{ userData.email }}
       </div>
+
+      <label class="user-info">Password </label>
+      <div v-if="this.$route.params.id" class="user-data-password">
+        {{ user.password }}
+      </div>
+      <div v-else class="user-data-password">{{ userData.password }}</div>
     </div>
   </div>
 </template>
+
 <script>
-import { getUserById, getAllUsers } from "../services/authService";
+import customBtn from "./buttons/customBtn.vue";
 
 export default {
+  components: {
+    customBtn,
+  },
   data() {
     return {
       userData: {},
-      isAdmin: false,
-      token: "",
       user: {},
-      users: {},
+      id: "",
     };
   },
   created() {
-    this.user = this.$store.getters.getUser;
-    this.token = this.$store.getters.isLoggedIn;
-    this.userOrAdminGetUserData();
-    this.verifyRole();
+    this.userData = this.$store.getters.getUserInfo;
+    this.id = this.$route.params.id;
+    this.adminSearchUserById();
   },
-  mounted() {
-    // this.userData = this.$store.getters.getUserInfo;
-  },
+
   methods: {
-    verifyRole() {
-      if (this.user.role === "admin" || this.user.role === "super") {
-        this.isAdmin = true;
+    adminSearchUserById() {
+      if (this.$store.getters.getAdmin) {
+        let data = this.$store.getters.getUsers;
+        let id = this.id;
+        this.user = data.find(function (post) {
+          if (post.id == `${id}`) return true;
+        });
       }
     },
-    async userOrAdminGetUserData() {
-      if (this.user.role === "admin" || this.user.role === "super") {
-        await this.fetchUsers();
-        this.users = this.$store.getters.getUsers;
-      } else {
-        await this.fetchUserData();
-        this.userData = this.$store.getters.getUserInfo;
-      }
-    },
-    async fetchUserData() {
-      try {
-        const response = await getUserById();
-        const user_info = response.data[0];
-        this.$store.dispatch("getUserById", { user_info });
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    async fetchUsers() {
-      try {
-        const response = await getAllUsers();
-        const users = response.data;
-        this.$store.dispatch("getAllUsers", { users });
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    openUserProfile(id) {
+    openEditUserProfile(id) {
       this.$router.push(`/edituser/${id}`);
     },
   },
 };
 </script>
+
 <style>
 @import "./../assets/styles/pagesCss/profilePage.css";
 </style>

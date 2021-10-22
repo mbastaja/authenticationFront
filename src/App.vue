@@ -15,10 +15,6 @@ export default {
     "app-navigation": navBar,
   },
   name: "App",
-
-  data: () => ({
-    //
-  }),
 };
 </script>
 <style>
