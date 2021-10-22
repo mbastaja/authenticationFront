@@ -3,6 +3,8 @@ import App from "./App.vue";
 import VueToastify from "vue-toastify";
 import router from "./router";
 import store from "./store";
+import "@fortawesome/fontawesome-free/css/all.css";
+import "@fortawesome/fontawesome-free/js/all.js";
 import {
   ValidationProvider,
   ValidationObserver,
