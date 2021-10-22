@@ -86,3 +86,10 @@ h1{
 .form-error{
     color: #c52828
 }
+
+.fa-user-times{
+    position: absolute;
+    color: white;
+    right: 8%;
+    top: 8%;
+}
