@@ -1,57 +1,57 @@
-.list-container{
+.container{
     display: flex;
-    justify-content: center;
-
-}
-
-.users-list{
-    display: flex;
-    /* flex-direction: column; */
-    flex-wrap: wrap;
-    width: 50%;
-    justify-content: space-evenly;
-}
-
-.user-div{
-    display: flex;
-    flex: 1 0 33%;
     flex-direction: column;
     justify-content: center;
-    align-items: left;
-    /* width: 100%; */
-    background-color: rgb(49, 49, 49);
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
-    padding-bottom: 20px;
-    overflow-wrap: break-word;
-    /* text-align: left; */
+    height: 100%;
+    width: 100%;
+    padding-top: 2%;
 }
+
+.user-data-container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    /* border: solid 1px ; */
+    background-color: rgb(55, 58, 58);
+    border-radius: 35px;
+    box-shadow: 0 0px 30px rgb(194, 199, 199);
+    height: 65%;
+    padding: 5%;
+
+}
+
+.user-info{
+    padding-top: 30px;
+}
+
+h2{
+    padding-bottom: 5%;
+    padding-top: 3%;
+}
+
 h1{
-    margin-bottom: 40px;
-    margin-top: 40px;
-
-}
-h3{
-    align-items: center;
-    text-transform: capitalize;
-    margin-bottom: 10px;
-}
-.user-text, .password-user{
-    text-align: left;
-    padding-bottom: 5px;
-    /* margin-left: 10px; */
-    padding-left: 10px;
+    padding-bottom: 5%;
 }
 
-.password-user{
-    width: 22ch;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+.user-data, .user-data-password{
+    padding-top: 1%;
+    font-weight: bold;
+    font-size: 18px;
+}
+.user-data-password{
+    text-align: center;
+    width: 100ch;
+    /* white-space: nowrap;
+    overflow: hidden; */
+    text-overflow: ellipsis; 
 }
 
-.user-div:hover{
-    background-color: rgb(97, 97, 97);
-    
+.fa-user-edit{
+    position: absolute;
+    color: white;
+    right: 5%;
+    top: 10%;
 }
+
