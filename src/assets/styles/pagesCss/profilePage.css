@@ -13,7 +13,6 @@
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    /* border: solid 1px ; */
     background-color: rgb(55, 58, 58);
     border-radius: 35px;
     box-shadow: 0 0px 30px rgb(194, 199, 199);
@@ -43,8 +42,6 @@ h1{
 .user-data-password{
     text-align: center;
     width: 100ch;
-    /* white-space: nowrap;
-    overflow: hidden; */
     text-overflow: ellipsis; 
 }
 
@@ -55,3 +52,9 @@ h1{
     top: 10%;
 }
 
+.fa-user-times{
+    position: absolute;
+    color: white;
+    right: 8%;
+    top: 8%;
+}
